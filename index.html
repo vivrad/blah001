@@ -8,22 +8,25 @@
     </style> 
 
     <script>
+      
     function display_random_image() 
-    {
-       var theImages = [{
-          src: "https://images.pexels.com/photos/421129/pexels-photo-421129.jpeg",
-          width: "320",
-          height: "240"
-      }, {
-          src: "https://images.pexels.com/photos/2602451/pexels-photo-2602451.jpeg",
-          width: "320",
-          height: "240"
-      }, {
-          src: "https://images.pexels.com/photos/2412941/pexels-photo-2412941.jpeg",
-          width: "320",
-          height: "240"
-      }];
-
+      {        
+      //List of images
+      var theImages = [{
+            src: "https://images.pexels.com/photos/421129/pexels-photo-421129.jpeg",
+            width: "320",
+            height: "240"
+        }, {
+            src: "https://images.pexels.com/photos/2602451/pexels-photo-2602451.jpeg",
+            width: "320",
+            height: "240"
+        }, {
+            src: "https://images.pexels.com/photos/2412941/pexels-photo-2412941.jpeg",
+            width: "320",
+            height: "240"
+        }];
+      
+      //Load list into an array
       var preBuffer = [];
       for (var i = 0, j = theImages.length; i < j; i++) {
           preBuffer[i] = new Image();
@@ -32,28 +35,28 @@
           preBuffer[i].height = theImages[i].height;
       }
 
-    // create random image number
-    function getRandomInt(min,max) 
-      {
-        //  return Math.floor(Math.random() * (max - min + 1)) + min;
+      // Function to get random image number
+      function getRandomInt(min,max) 
+        {
+          imn = Math.floor(Math.random() * (max - min + 1)) + min;
+          return preBuffer[imn];
+        }
+        
+      // Actually get the random number using the function above
+      var newImage = getRandomInt(0, preBuffer.length - 1);
 
-    imn = Math.floor(Math.random() * (max - min + 1)) + min;
-      return preBuffer[imn];
-      }  
-
-    // 0 is first image,   preBuffer.length - 1) is  last image
-
-    var newImage = getRandomInt(0, preBuffer.length - 1);
-
-    // remove the previous images
-    var images = document.getElementsByTagName('img');
-    var l = images.length;
-    for (var p = 0; p < l; p++) {
-      images[0].parentNode.removeChild(images[0]);
-    }
-    // display the image  
-    document.body.appendChild(newImage);
-    }
+      // remove the previous images
+      var images = document.getElementsByTagName('img');
+      var l = images.length;
+      for (var p = 0; p < l; p++) 
+        {
+        images[0].parentNode.removeChild(images[0]);
+        }
+        
+      // display the image  
+      document.body.appendChild(newImage);
+      }
+      
     </script>
   </head>
 
